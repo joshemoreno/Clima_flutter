@@ -1,6 +1,15 @@
+import 'package:clima/ui/cities/my_cities.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
+  void handelNAvigateTap(BuildContext context) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (_) => CitiesPage(),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -61,14 +70,15 @@ class HomePage extends StatelessWidget {
                   height: 160,
                 ),
                 RaisedButton(
-                    color: Colors.black,
-                    textColor: Colors.white,
-                    elevation: 200,
-                    splashColor: Colors.grey,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(40.0)),
-                    child: Text('Agragar ciudad'),
-                    onPressed: () {})
+                  color: Colors.black,
+                  textColor: Colors.white,
+                  elevation: 200,
+                  splashColor: Colors.grey,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(40.0)),
+                  child: Text('Agragar ciudad'),
+                  onPressed: () => handelNAvigateTap(context),
+                ),
               ],
             ),
           ),

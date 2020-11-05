@@ -1,4 +1,4 @@
-import 'package:clima/ui/cities/my_cities.dart';
+import 'package:clima/ui/cities/cities_page.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -75,7 +75,7 @@ class HomePage extends StatelessWidget {
                   elevation: 200,
                   splashColor: Colors.grey,
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(40.0)),
+                      borderRadius: BorderRadius.circular(15.0)),
                   child: Text('Agragar ciudad'),
                   onPressed: () => handelNAvigateTap(context),
                 ),

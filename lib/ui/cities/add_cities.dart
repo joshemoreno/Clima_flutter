@@ -16,18 +16,23 @@ class AddCitiesPage extends StatefulWidget {
 class _AddCitiesPageState extends State<AddCitiesPage> {
   final debouncer = Debouncer();
   List<City> cities = [];
+  bool loading = false;
 
   void onChangeText(String text) {
     debouncer.run(() {
-      requestSearch(text);
+      if (text.isNotEmpty) requestSearch(text);
     });
   }
 
   void requestSearch(String text) async {
+    setState(() {
+      loading = true;
+    });
     final url = '${api}search/?query=$text';
     final response = await http.get(url);
     final data = jsonDecode(response.body) as List;
     setState(() {
+      loading = false;
       cities = data.map((e) => City.fromJson(e)).toList();
     });
   }
@@ -70,21 +75,26 @@ class _AddCitiesPageState extends State<AddCitiesPage> {
             ),
             Expanded(
               child: ListView.builder(
-                  itemCount: cities.length,
-                  itemBuilder: (context, index) {
-                    final city = cities[index];
-                    return ListTile(
-                      title: Text(city.title),
-                      trailing: IconButton(
-                        icon: Icon(
-                          Icons.add,
-                          color: Colors.white,
-                        ),
-                        onPressed: () {},
+                itemCount: cities.length,
+                itemBuilder: (context, index) {
+                  final city = cities[index];
+                  return ListTile(
+                    title: Text(city.title),
+                    trailing: IconButton(
+                      icon: Icon(
+                        Icons.add,
+                        color: Colors.white,
                       ),
-                    );
-                  }),
-            )
+                      onPressed: () {},
+                    ),
+                  );
+                },
+              ),
+            ),
+            if (loading)
+              Center(
+                child: CircularProgressIndicator(),
+              ),
           ],
         ),
       ),

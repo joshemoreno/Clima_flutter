@@ -1,6 +1,6 @@
 import 'package:clima/ui/common/header.dart';
 import 'package:flutter/material.dart';
-import 'add_cities.dart';
+import 'add/add_cities.dart';
 
 class CitiesPage extends StatelessWidget {
   void handelNAvigateTap(BuildContext context) {

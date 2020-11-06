@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:clima/data/constants.dart';
 import 'package:clima/model/city.dart';
-import 'package:clima/ui/cities/cities_page.dart';
+// import 'package:clima/ui/cities/cities_page.dart';
 import 'package:clima/ui/common/debouncer.dart';
 import 'package:clima/ui/common/header.dart';
 import 'package:flutter/material.dart';
@@ -80,6 +80,7 @@ class _AddCitiesPageState extends State<AddCitiesPage> {
                           Icons.add,
                           color: Colors.white,
                         ),
+                        onPressed: () {},
                       ),
                     );
                   }),
